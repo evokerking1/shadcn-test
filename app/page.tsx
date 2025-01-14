@@ -1,6 +1,10 @@
+"use client"
+
 import {CommandDialogDemo} from "@/app/components/command"
 import { Button } from '@/components/ui/button'
 import { ModeToggle } from '@/components/ui/theme_button'
+import { ToastAction } from '@/components/ui/toast'
+import {toast} from "@/hooks/use-toast";
 
 
 export default function Home() {
@@ -10,7 +14,13 @@ export default function Home() {
         <CommandDialogDemo></CommandDialogDemo>
         <ModeToggle/>
 
-        <Button>Hello</Button>
+        <Button variant={"destructive"} onClick={() => {
+            toast({
+                title: "Are You Sure You Want To Self Destruct?",
+                description: "Press the button to confirm.",
+                action: <ToastAction altText="Self Destruct">Self Destruct</ToastAction>,
+            })
+        }}>Self Destruct.</Button>
         
       </main>
     </div>
